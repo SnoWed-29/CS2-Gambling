@@ -20,7 +20,10 @@ Route::get('/',[PagesController::class, 'index']);
 
 
 Route::get('/fetchdata', [fecthSkinsController::class, 'fetchData']);
+
 Route::get('/create-case', [PagesController::class, 'createCase']);
 Route::post('/create-case', [BoxController::class, 'createBox']);
+Route::get('/cases', [BoxController::class, 'boxPage']);
 Route::get('/case/{id}', [BoxController::class, 'showBox']);
+Route::get('/opencase/{id}', [BoxController::class, 'handleBox']);
 

@@ -6,8 +6,8 @@
             <h2 class="text-4xl w-fit mx-auto uppercase p-4 border-b-2 border-b-[#F4CE14]">{{$box->name}}</h2>
         </div>
 
-        <div class="flex w-full border h-36 my-3 justify-center items-center  shadow-lg">
-            <button class="bg-green-400 p-3 rounded text-white hover:bg-[#F4CE14]">Open Case</button>
+        <div class="flex w-full border h-fit my-3 justify-center items-center  shadow-lg" id="randomSkinResult">
+            <button id="getRandomSkinButton" class="bg-green-400 p-3 rounded m-6 text-white hover:bg-[#F4CE14]">Open Case</button>
         </div>
         <div class="containermy-3  grid grid-cols-4 gap-4">
             @foreach ($skins as $skin)             
@@ -51,4 +51,36 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    $(document).ready(function () {
+        // Handle button click event
+        $('#getRandomSkinButton').on('click', function () {
+            // Make an AJAX request to your server
+            $.ajax({
+                type: 'GET',
+                url: '/opencase/' + {{ $box->id }}, // Replace with your actual route and box ID
+                beforeSend: function () {
+                    // Show a loading message or spinner while waiting for the response
+                    $('#randomSkinResult').html('<h1 class="text-2xl m-6">Opening case...</h1>');
+                },
+                success: function (data) {
+                    // Introduce a delay of 3 seconds before displaying the skin
+                    setTimeout(function () {
+                        // Update the content of the randomSkinResult div with the new skin information
+                        $('#randomSkinResult').html(
+                            '<img src="' + data.randomSkin.image + '" alt="Random Skin Image" class="rounded-lg w-[312px] h-[184px]">' +
+                            '<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">' + data.randomSkin.name + '</h5>'
+                        );
+                    }, 1500);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

@@ -8,7 +8,7 @@
             </div>
             <div class="flex flex-col">
                 <h2 class="text-2xl text-black">Create you own Case Now ! Or open Our New Cases </h2>
-                <a href="#" class="bg-[#495E57] p-2 text-xl w-fit text-white rounded-md">View Cases</a>
+                <a href="/create-case" class="bg-[#495E57] p-2 text-xl w-fit text-white rounded-md">View Cases</a>
             </div>
         </div>
     </div>
