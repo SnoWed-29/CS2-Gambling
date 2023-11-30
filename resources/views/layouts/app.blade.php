@@ -27,7 +27,8 @@
                 <a href="" class="text-[#45474B] p-4 mx-1 text-xl font-semibold hover:border-b-2 hover:border-[#F4CE14]">Skins</a>
                 <a href="/cases" class="text-[#45474B] p-4 mx-1 text-xl font-semibold hover:border-b-2 hover:border-[#F4CE14]">Cases</a>
                 <a href="/create-case" class="text-[#45474B] p-4 mx-1 text-xl font-semibold hover:border-b-2 hover:border-[#F4CE14]">Create Case</a>
-                <a href="" class="text-[#45474B] p-4 mx-1 text-xl font-semibold hover:border-b-2 hover:border-[#F4CE14]">Profile</a>
+                <a href="/profile/{{ Auth::user()->id }}" class="text-[#45474B] p-4 mx-1 text-xl font-semibold hover:border-b-2 hover:border-[#F4CE14]">Profile</a>
+                
             </div>
         </nav>
 

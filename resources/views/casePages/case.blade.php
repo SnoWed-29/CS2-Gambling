@@ -52,7 +52,6 @@
     </div>
 </section>
 
-
 <script>
     $(document).ready(function () {
         // Handle button click event
@@ -68,19 +67,27 @@
                 success: function (data) {
                     // Introduce a delay of 3 seconds before displaying the skin
                     setTimeout(function () {
-                        // Update the content of the randomSkinResult div with the new skin information
-                        $('#randomSkinResult').html(
-                            '<img src="' + data.randomSkin.image + '" alt="Random Skin Image" class="rounded-lg w-[312px] h-[184px]">' +
-                            '<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">' + data.randomSkin.name + '</h5>'
-                        );
+                        // Check if randomSkin property exists
+                        if (data.randomSkin) {
+                            // Update the content of the randomSkinResult div with the new skin information
+                            $('#randomSkinResult').html(
+                                '<img src="' + data.randomSkin.image + '" alt="Random Skin Image" class="rounded-lg w-[312px] h-[184px]">' +
+                                '<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">' + data.randomSkin.name + '</h5>'
+                            );
+                        } else {
+                            // Display a message if no skin is found
+                            $('#randomSkinResult').html('<h1 class="text-2xl m-6">You Lost.</h1>');
+                        }
                     }, 1500);
                 },
                 error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
+                    // console.error(xhr.responseText);
+                    $('#randomSkinResult').html('<h1 class="text-2xl m-6">You Lost.</h1>');
                 }
             });
         });
     });
 </script>
+
 
 @endsection

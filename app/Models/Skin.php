@@ -15,4 +15,7 @@ class Skin extends Model
     {
         return $this->belongsToMany(Box::class, 'box_skin_relations');
     }
+    public function result(){
+        return $this->belongsToMany(BoxResult::class);
+    }
 }

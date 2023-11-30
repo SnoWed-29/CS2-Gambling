@@ -3,6 +3,7 @@
 use App\Http\Controllers\BoxController;
 use App\Http\Controllers\fecthSkinsController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,9 @@ Route::post('/create-case', [BoxController::class, 'createBox']);
 Route::get('/cases', [BoxController::class, 'boxPage']);
 Route::get('/case/{id}', [BoxController::class, 'showBox']);
 Route::get('/opencase/{id}', [BoxController::class, 'handleBox']);
+Route::get('/profile/{id}', [ProfileController::class, 'index']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
